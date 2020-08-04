@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Teste</title>
+
+        <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+        <script src="lib/jquery/dist/jquery.min.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<script type="text/javascript" src="lib/jquery.mask.js"></script>
+		<script type="text/javascript" src="formularioCadastro.js"></script>
+
+        <link href="css/geral.css" rel="stylesheet">        
+    </head>
+    <body>
+
+	<div id="cadastro" style="margin-top: 10px;">
+
+		<div class="modal fade" tabindex="-1" role="dialog" id="modalAlerta" style="margin-top: 10%;">
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header">
+						<font class="modal-title" style="font-size: 1.2em; font-weight: bolder;">Alerta</font>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" id="modalAlertaTexto">
+						<p>Alerta Aqui.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row col-sm-offset-1" id="divCadastro">
+
+
+			<form name="cadastro" method="post" action="procuroimovel?acao=adicionarNovaDemanda" onsubmit="return verificaCadastroDemanda();">
+
+			<div class="col-sm-12" id="divPessoal" style="margin: 10px;">
+
+				<div class="row">
+					<div class="col-sm-12">
+						<h2 style="margin-bottom: 20px; !important">Cadastrar Pedido de imóvel</h2>
+					</div>
+				</div>
+
+				<div class="row" id="divCidade">
+					<div class="col-sm-8">
+						<div class="form-group">
+							<label for="cidade">Cidade: <font color="red">*</font></label>
+							<input class="form-control" name="cidade" id="cidade" type="text" value="São Paulo" />
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-group">
+							<label for="uf">UF: <font color="red">*</font></label>
+							<select class="form-control" id="uf" name="uf"><option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PR</option><option>PB</option><option>PA</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SE</option><option selected="selected">SP</option><option>TO</option> </select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" id="divBairro">
+					 <div class="col-sm-10">
+						<div class="form-group">
+							<label for="cidade">Bairro: <font color="red">*</font></label>
+							<input class="form-control" name="bairro" id="bairro" type="text" placeholder="Bairro" />
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row" id="divOperacao">
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="cargo">Operação: <font color="red">*</font></label>
+							<select class="form-control" id="operacao" name="operacao">
+								<option value="">Selecione...</option>
+								<option value="1">Venda</option>
+								<option value="2">Locação</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="cargo">Tipo: <font color="red">*</font></label>
+							<select class="form-control" id="tipo" name="tipo">
+								<option value="">Selecione...</option>
+								<option value="residencial">Residencial</option>
+								<option value="comercial">Comercial</option>
+							</select>
+						</div>
+					</div>
+
+					 <div class="col-sm-2">
+						<div class="form-group">
+							<label for="cargo">Dormitórios: </label>
+							<select class="form-control" id="dormitorio" name="dormitorio">
+								<option value="">Selecione...</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="col-sm-2">
+						<div class="form-group">
+							<label for="cargo">Suítes:</label>
+							<select class="form-control" id="suites" name="suites">
+								<option value="0">Selecione...</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="cargo">Valor:</label>
+							<input class="form-control" name="valor" id="valor" type="text" placeholder="0,00" />
+						</div>
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="cargo">Área (M2):</label>
+							<input class="form-control" name="area" id="area" type="text" placeholder="0,00" />
+						</div>
+					</div>                            
+					
+					<div class="col-sm-10">
+						   <label for="cargo">Dados do Cliente</label>
+					</div>
+					
+					<div class="col-sm-5">
+						<div class="form-group">
+							<label for="cargo">Nome:</label>
+							<input class="form-control" name="nome_cliente" id="nome_cliente" type="text" />
+						</div>
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="cargo">E-mail:</label>
+							<input class="form-control" name="email_cliente" id="email_cliente" type="text" />
+						</div>
+					</div>
+					
+					<div class="col-sm-2">
+						<div class="form-group">
+							<label for="cargo">Telefone:</label>
+							<input class="form-control" name="telefone_cliente" id="telefone_cliente" type="text" placeholder="(99) 9 9999-9999"/>
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="row">
+					<div class="col-sm-10">
+						<br />
+						<input type="submit" class="btn btn-success" value="Cadastrar" />
+						<input type="button" class="btn btn-warning" value="Listar Cadastros" onClick="window.location='listagem.html';" />
+						<br />
+						<br />
+					</div>
+				</div>
+				</div>
+			</form>
+		</div>
+	</div>
+    </body>
+</html>

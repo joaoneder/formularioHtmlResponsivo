@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Teste</title>
+
+        <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+        <script src="lib/jquery/dist/jquery.min.js"></script>
+        <script src="lib/jquery-ui/jquery-ui.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<script type="text/javascript" src="lib/jquery.mask.js"></script>
+		<script type="text/javascript" src="listagem.js"></script>
+
+        <link href="css/geral.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="listagem.css">        
+    </head>
+    <body>
+
+	<style type="text/css">
+		.bs-example
+		{
+			margin: 20px;
+		}
+	</style>
+
+	<div class="col-sm-12 col-md-12" align="center" style="padding-top: 10px;">
+		<div class="form-horizontal" style="padding: 0px;">
+
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 style="margin-bottom: 20px; !important">Pedidos de Imóveis</h2>
+				</div>
+			</div>
+
+			<form name="filtro_busca" method="post" action="procuroimovellista">
+				<div class="col-sm-12">              
+			  
+					
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="bairro" class="col-sm-1 control-label">Bairro</label>
+							<input type="text" class="form-control input-sm" name="bairro" id="bairro"  style="width: 18em;" />
+						</div>
+					</div>
+					
+				   <div class="col-sm-3">
+						<div class="form-group">
+							<label for="cidade" class="col-sm-1 control-label">Cidade</label>
+							<input type="text" class="form-control input-sm" name="cidade" id="cidade"  style="width: 18em;" />
+						</div>
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="form-group">
+							 <input type="buton" value="Filtrar" class="btn btn-primary" style="width: 7em;" />
+							 <input type="buton" value="Limpar" class="btn btn-primary" style="width: 7em;"  />
+						</div>
+					</div>
+									
+					<div class="col-sm-2">
+						<div class="form-group">
+							 <input type="buton" id="busca_avancada_click" value="Busca Avançada" class="btn btn-primary" style="width: 14.5em;" readonly />
+						</div>
+					</div>              
+					
+			  
+			  
+					<div id="busca_avancada" style="display:none;">
+									  
+					
+
+							<div class="bs-example" align="center">
+								
+								
+
+								<div class="btn-group" data-toggle="buttons" style="padding-top: 0.5em;">                                 
+									<label class="btn btn-primary active" style="width: 6em;">
+										<input type="radio" name="operacao" value="1" id="option1" autocomplete="off" checked />Venda
+									</label>   
+									<label class="btn btn-primary" style="width: 6em;">
+										<input type="radio" name="operacao" value="2" id="option2" autocomplete="off" />Locação
+									</label>
+								</div>
+								
+								
+								<div class="btn-group" style="padding-top: 0.5em;">
+									<button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="width: 12em;">Quartos</button>
+									<ul class="dropdown-menu dropdown-menu-form" style="padding-left: 10px;">
+										<li><label><input type="checkbox" value="1" name="quarto[]" id="quarto" style="margin-right: 5px;">1 Quarto</label></li>
+										<li><label><input type="checkbox" value="2" name="quarto[]" id="quarto" style="margin-right: 5px;">2 Quartos</label></li>
+										<li><label><input type="checkbox" value="3" name="quarto[]" id="quarto" style="margin-right: 5px;">3 Quartos</label></li>
+										<li><label><input type="checkbox" value="4" name="quarto[]" id="quarto" style="margin-right: 5px;">4 Quartos</label></li>
+										<li><label><input type="checkbox" value="5" name="quarto[]" id="quarto" style="margin-right: 5px;">5 Quartos</label></li>
+										<li><label><input type="checkbox" value="6" name="quarto[]" id="quarto" style="margin-right: 5px;">6+ Quartos</label></li>
+									</ul>
+								</div>
+							
+						
+						
+								<div class="btn-group" style="padding-top: 0.5em;">
+									<button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="width: 12em;">Suites</button>
+									<ul class="dropdown-menu dropdown-menu-form" style="padding-left: 10px;">
+										<li><label><input type="checkbox" value="1" name="suite[]" id="suite" style="margin-right: 5px;">1 Suite</label></li>
+										<li><label><input type="checkbox" value="2" name="suite[]" id="suite" style="margin-right: 5px;">2 Suites</label></li>
+										<li><label><input type="checkbox" value="3" name="suite[]" id="suite" style="margin-right: 5px;">3 Suites</label></li>
+										<li><label><input type="checkbox" value="4" name="suite[]" id="suite" style="margin-right: 5px;">4 Suites</label></li>
+										<li><label><input type="checkbox" value="5" name="suite[]" id="suite" style="margin-right: 5px;">5 Suites</label></li>
+										<li><label><input type="checkbox" value="6" name="suite[]" id="suite" style="margin-right: 5px;">6+ Suites</label></li>
+									</ul>
+								</div> 
+						
+								<div class="btn-group" style="padding-top: 0.5em;">
+									<button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="width: 12em;">Faixa de Preço (R$)</button>
+									<ul class="dropdown-menu dropdown-menu-form" style="padding-left: 10px;width: 20em;">
+										<li>De <input type="text" id="min" name="min" readonly style="width:6em;height:2em;" /> até <input type="text" id="max" name="max" readonly style="width:6em;height:2em;" /></li>
+										<li><div id="slider-range" style="margin:5px;width:18em;"></div></li>
+									</ul>
+								</div>
+								
+								<div class="btn-group" style="padding-top: 0.5em;">
+									<button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="width: 12em;">Área (M2)</button>
+									<ul class="dropdown-menu dropdown-menu-form" style="padding-left: 10px;width: 20em;">
+										<li>De <input type="text" id="area_min" name="area_min" readonly style="width:6em;height:2em;" /> até <input type="text" id="area_max" name="area_max" readonly style="width:6em;height:2em;" /></li>
+										<li><div id="slider-range-area" style="margin:5px;width:18em;"></div></li>
+									</ul>
+								</div>
+					
+					
+						
+						</div>
+					</div>      
+
+					 
+			</div>       
+		</form>
+		</div>
+			<div class="table"> 
+				<table class="table table-striped">
+					<thead>
+						<tr style="font-size:0.9em;">
+							<th style="text-align: center;">Cidade</th>
+							<th style="text-align: center;">UF</th>
+							<th style="text-align: center;">Bairro</th>
+							<th style="text-align: center;">Operação</th>
+							<th style="text-align: center;">Tipo</th>
+							<th style="text-align: center;">Dorm</th>
+							<th style="text-align: center;">Suítes</th>
+							<th style="text-align: center;">Área</th>
+							<th style="text-align: center;">Valor</th>
+							<th style="text-align: center;">Contato</th>
+						</tr>
+					</thead>
+					<tbody>
+							<tr style="font-size:0.8em;">
+								<td style="text-align: center;">São Paulo</td>
+								<td style="text-align: center;">SP</td>
+								<td style="text-align: center;">Moema</td>
+								<td style="text-align: center;">Venda</td>
+								<td style="text-align: center;">Residencial</td>
+								<td style="text-align: center;">3</td>
+								<td style="text-align: center;">1</td>
+								<td style="text-align: center;">65 M2</td>
+								<td style="text-align: center;">R$ 985.000,00</td>
+								<td style="text-align: center;">imobi@remobi.com</td>
+							</tr>
+							<tr style="font-size:0.8em;">
+								<td style="text-align: center;">São Paulo</td>
+								<td style="text-align: center;">SP</td>
+								<td style="text-align: center;">Moema</td>
+								<td style="text-align: center;">Venda</td>
+								<td style="text-align: center;">Residencial</td>
+								<td style="text-align: center;">3</td>
+								<td style="text-align: center;">1</td>
+								<td style="text-align: center;">65 M2</td>
+								<td style="text-align: center;">R$ 985.000,00</td>
+								<td style="text-align: center;">imobi@remobi.com</td>
+							</tr>
+							<tr style="font-size:0.8em;">
+								<td style="text-align: center;">São Paulo</td>
+								<td style="text-align: center;">SP</td>
+								<td style="text-align: center;">Moema</td>
+								<td style="text-align: center;">Venda</td>
+								<td style="text-align: center;">Residencial</td>
+								<td style="text-align: center;">3</td>
+								<td style="text-align: center;">1</td>
+								<td style="text-align: center;">65 M2</td>
+								<td style="text-align: center;">R$ 985.000,00</td>
+								<td style="text-align: center;">imobi@remobi.com</td>
+							</tr>
+							<tr style="font-size:0.8em;">
+								<td style="text-align: center;">São Paulo</td>
+								<td style="text-align: center;">SP</td>
+								<td style="text-align: center;">Moema</td>
+								<td style="text-align: center;">Venda</td>
+								<td style="text-align: center;">Residencial</td>
+								<td style="text-align: center;">3</td>
+								<td style="text-align: center;">1</td>
+								<td style="text-align: center;">65 M2</td>
+								<td style="text-align: center;">R$ 985.000,00</td>
+								<td style="text-align: center;">imobi@remobi.com</td>
+							</tr>
+							<tr style="font-size:0.8em;">
+								<td style="text-align: center;">São Paulo</td>
+								<td style="text-align: center;">SP</td>
+								<td style="text-align: center;">Moema</td>
+								<td style="text-align: center;">Venda</td>
+								<td style="text-align: center;">Residencial</td>
+								<td style="text-align: center;">3</td>
+								<td style="text-align: center;">1</td>
+								<td style="text-align: center;">65 M2</td>
+								<td style="text-align: center;">R$ 985.000,00</td>
+								<td style="text-align: center;">imobi@remobi.com</td>
+							</tr>
+							<tr style="font-size:0.8em;">
+								<td style="text-align: center;">São Paulo</td>
+								<td style="text-align: center;">SP</td>
+								<td style="text-align: center;">Moema</td>
+								<td style="text-align: center;">Venda</td>
+								<td style="text-align: center;">Residencial</td>
+								<td style="text-align: center;">3</td>
+								<td style="text-align: center;">1</td>
+								<td style="text-align: center;">65 M2</td>
+								<td style="text-align: center;">R$ 985.000,00</td>
+								<td style="text-align: center;">imobi@remobi.com</td>
+							</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="17">
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+		<a href="#" onClick="document.location='formularioCadastro.html';" class="float"><i class="fa fa-plus my-float"></i></a>
+	</body>
+</html>
